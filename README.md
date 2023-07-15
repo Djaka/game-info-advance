@@ -1,8 +1,8 @@
-# game-info
+# game-info-advance
 
 ![RT](gameinfoadvance.gif)
 
-Aplikasi GameInfo merupakan aplikasi catalog game yang di rancang khusus untuk keperluan submission akhir pada modul Belajar Fundamental Aplikasi IOS. Dalam membangun aplikasi ini terdapat beberapa halaman diantaranya adalah:
+Aplikasi GameInfoAdvance merupakan aplikasi catalog game yang di rancang khusus untuk keperluan submission pada modul Menjadi iOS develover expert. Dalam membangun aplikasi ini terdapat beberapa halaman diantaranya adalah:
 
 | No | Page Name                    | Fungsi                                                            |
 | -- | -----------------------------| ------------------------------------------------------------------|
@@ -13,10 +13,12 @@ Aplikasi GameInfo merupakan aplikasi catalog game yang di rancang khusus untuk k
 | 5  | Edit Profile                 | halaman untuk mengubah, mengupdate profile pengguna               |
 
 berikut merupakan sketsa atau wireframe dari aplikasi PremierLeagueInfo:
+
 ![RT](WireframeGameInfo.png)
 
-###Project Architecture
-This project utilizes Clean architecture pattern.
+
+### Project Architecture
+Project ini menggunakan Clean architecture pattern.
 
 ### Penjelasan Singkat
 1. ketika user pertama kali masuk ke halaman utama atau home maka akan muncul loading terlebih dahulu yg mana proses ini membutuhkan waktu untuk mengambil data ke API https://rawg.io
@@ -27,5 +29,5 @@ This project utilizes Clean architecture pattern.
 7. user dapat kembali ke halaman utama dengan menekan tombol navigasi back di pojok kanan atas
 8. untuk menambahkan game favorite user dapat menekan icon heart di list maupun detail, jika sudah di tambahkan maka akan muncul di halaman list favorite pada tab favorite, dan icon heart akan berubah menjadi fill
 9. user pun dapat menghapus game yg sudah di wishlist dengan cara meng klik icon heart baik di list maupun detail halaman game
-10. pilih "icon person" atau tab "about" maka user dapat melihat deskripsi dan pembuat dari aplikasi Game Info ini
+10. pilih "icon person" atau tab "profile" maka user dapat melihat deskripsi dan pembuat dari aplikasi Game Info ini
 11. terdapat feature update profile yang mana akan merubah nama, email, dan juga current job dari pengguna dengan cara menekan tombol edit
