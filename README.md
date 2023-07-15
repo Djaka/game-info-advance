@@ -13,7 +13,7 @@ Aplikasi GameInfo merupakan aplikasi catalog game yang di rancang khusus untuk k
 berikut merupakan sketsa atau wireframe dari aplikasi PremierLeagueInfo:
 ![RT](WireframeGameInfo.png)
 
-###Project Architecture
+### Project Architecture
 This project utilizes Clean architecture pattern.
 
 ### Penjelasan Singkat
