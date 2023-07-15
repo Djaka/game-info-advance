@@ -1,6 +1,6 @@
-# game-info
+# game-info-advance
 
-Aplikasi GameInfo merupakan aplikasi catalog game yang di rancang khusus untuk keperluan submission akhir pada modul Belajar Fundamental Aplikasi IOS. Dalam membangun aplikasi ini terdapat beberapa halaman diantaranya adalah:
+Aplikasi GameInfoAdvance merupakan aplikasi catalog game yang di rancang khusus untuk keperluan submission pada modul Menjadi iOS develover expert. Dalam membangun aplikasi ini terdapat beberapa halaman diantaranya adalah:
 
 | No | Page Name                    | Fungsi                                                            |
 | -- | -----------------------------| ------------------------------------------------------------------|
@@ -11,10 +11,12 @@ Aplikasi GameInfo merupakan aplikasi catalog game yang di rancang khusus untuk k
 | 5  | Edit Profile                 | halaman untuk mengubah, mengupdate profile pengguna               |
 
 berikut merupakan sketsa atau wireframe dari aplikasi PremierLeagueInfo:
+
 ![RT](WireframeGameInfo.png)
 
+
 ### Project Architecture
-This project utilizes Clean architecture pattern.
+Project ini menggunakan Clean architecture pattern.
 
 ### Penjelasan Singkat
 1. ketika user pertama kali masuk ke halaman utama atau home maka akan muncul loading terlebih dahulu yg mana proses ini membutuhkan waktu untuk mengambil data ke API https://rawg.io
