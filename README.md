@@ -1,5 +1,7 @@
 # game-info
 
+![RT](gameinfoadvance.gif)
+
 Aplikasi GameInfo merupakan aplikasi catalog game yang di rancang khusus untuk keperluan submission akhir pada modul Belajar Fundamental Aplikasi IOS. Dalam membangun aplikasi ini terdapat beberapa halaman diantaranya adalah:
 
 | No | Page Name                    | Fungsi                                                            |

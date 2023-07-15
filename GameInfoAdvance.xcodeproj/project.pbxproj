@@ -191,8 +191,8 @@
 		88BE30542A62743500DA7592 /* ProfileModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModelMock.swift; sourceTree = "<group>"; };
 		88BE30562A6275A200DA7592 /* ProfileUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCaseTest.swift; sourceTree = "<group>"; };
 		88BE305B2A627FEF00DA7592 /* GameInfoAdvanceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = GameInfoAdvanceTestPlan.xctestplan; sourceTree = "<group>"; };
-		88D3212E2A62501C00BBE0FA /* GameInfoAdvance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GameInfoAdvance.app; path = "/Users/djakapermana/Documents/XCode/dicoding/GameInfoAdvance/build/Debug-iphoneos/GameInfoAdvance.app"; sourceTree = "<absolute>"; };
-		88D3212F2A62501C00BBE0FA /* GameInfoAdvanceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = GameInfoAdvanceTest.xctest; path = "/Users/djakapermana/Documents/XCode/dicoding/GameInfoAdvance/build/Debug-iphoneos/GameInfoAdvanceTest.xctest"; sourceTree = "<absolute>"; };
+		88BE305C2A62991900DA7592 /* GameInfoAdvance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameInfoAdvance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88BE305D2A62991900DA7592 /* GameInfoAdvanceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameInfoAdvanceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D321312A625A1500BBE0FA /* GameInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInteractorMock.swift; sourceTree = "<group>"; };
 		88D321342A625C3200BBE0FA /* GameFavoriteUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFavoriteUseCaseTest.swift; sourceTree = "<group>"; };
 		88D321362A625CE800BBE0FA /* GameFavoriteInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFavoriteInteractorMock.swift; sourceTree = "<group>"; };
@@ -392,6 +392,8 @@
 			children = (
 				88971A852A53264F0019ABFC /* GameInfoAdvance */,
 				88A5E94A2A5C405A0043996B /* GameInfoAdvanceTest */,
+				88BE305C2A62991900DA7592 /* GameInfoAdvance.app */,
+				88BE305D2A62991900DA7592 /* GameInfoAdvanceTest.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -741,7 +743,7 @@
 				88B05EF82A5E529A004FBBEC /* Alamofire */,
 			);
 			productName = GameInfoAdvance;
-			productReference = 88D3212E2A62501C00BBE0FA /* GameInfoAdvance.app */;
+			productReference = 88BE305C2A62991900DA7592 /* GameInfoAdvance.app */;
 			productType = "com.apple.product-type.application";
 		};
 		88A5E9482A5C405A0043996B /* GameInfoAdvanceTest */ = {
@@ -764,7 +766,7 @@
 				88B05EFE2A5E5393004FBBEC /* SDWebImage */,
 			);
 			productName = GameInfoAdvanceTest;
-			productReference = 88D3212F2A62501C00BBE0FA /* GameInfoAdvanceTest.xctest */;
+			productReference = 88BE305D2A62991900DA7592 /* GameInfoAdvanceTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
