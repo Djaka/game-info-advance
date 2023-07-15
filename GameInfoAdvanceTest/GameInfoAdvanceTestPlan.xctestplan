@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "52E99E85-2467-4F0E-AE87-380DBB2C867B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GameInfoAdvance.xcodeproj",
+        "identifier" : "88A5E9482A5C405A0043996B",
+        "name" : "GameInfoAdvanceTest"
+      }
+    }
+  ],
+  "version" : 1
+}
