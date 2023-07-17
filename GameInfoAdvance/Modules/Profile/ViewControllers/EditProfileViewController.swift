@@ -149,11 +149,6 @@ class EditProfileViewController: UIViewController {
         profileImage.clipsToBounds = true
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = GameInfoAlert.alert(title: title, message: message)
-        self.present(alert, animated: true)
-    }
-    
     private func setupBackView() {
         backView.layer.cornerRadius = 10
         backView.clipsToBounds = true

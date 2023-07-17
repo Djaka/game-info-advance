@@ -52,20 +52,7 @@ class GameTableViewCell: UITableViewCell {
         self.titleGameLabel.text = gameModel.name
         self.ratingLabel.text = String(gameModel.rating ?? 0.0)
         self.releaseDateLabel.text = gameModel.released
-        self.ratingLogo.image = {
-            guard let rating = gameModel.rating else {
-                return UIImage(systemName: "star.fill")
-            }
-            
-            switch rating {
-            case 4.0 ... 5.0:
-                return UIImage(systemName: "star.fill")
-            case 2.5 ... 3.9:
-                return UIImage(systemName: "star.leadinghalf.filled")
-            default:
-                return UIImage(systemName: "star")
-            }
-        }()
+        self.ratingLogo.image = gameModel.rating.getRatingImage()
         
         self.platformStackView.removeFullyAllArrangedSubviews()
         if let images = gameModel.platformImages {

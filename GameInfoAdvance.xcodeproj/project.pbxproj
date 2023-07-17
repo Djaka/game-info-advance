@@ -92,6 +92,8 @@
 		88BE30532A6273E700DA7592 /* ProfileInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE30522A6273E700DA7592 /* ProfileInteractorMock.swift */; };
 		88BE30552A62743500DA7592 /* ProfileModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE30542A62743500DA7592 /* ProfileModelMock.swift */; };
 		88BE30572A6275A200DA7592 /* ProfileUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE30562A6275A200DA7592 /* ProfileUseCaseTest.swift */; };
+		88C7D8DA2A64DF39000DC4D0 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7D8D92A64DF39000DC4D0 /* Optional+Ext.swift */; };
+		88C7D8DC2A64DF90000DC4D0 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7D8DB2A64DF90000DC4D0 /* UIViewController+Ext.swift */; };
 		88D321322A625A1500BBE0FA /* GameInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D321312A625A1500BBE0FA /* GameInteractorMock.swift */; };
 		88D321352A625C3200BBE0FA /* GameFavoriteUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D321342A625C3200BBE0FA /* GameFavoriteUseCaseTest.swift */; };
 		88D321372A625CE800BBE0FA /* GameFavoriteInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D321362A625CE800BBE0FA /* GameFavoriteInteractorMock.swift */; };
@@ -193,6 +195,8 @@
 		88BE305B2A627FEF00DA7592 /* GameInfoAdvanceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = GameInfoAdvanceTestPlan.xctestplan; sourceTree = "<group>"; };
 		88BE305C2A62991900DA7592 /* GameInfoAdvance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameInfoAdvance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BE305D2A62991900DA7592 /* GameInfoAdvanceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameInfoAdvanceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		88C7D8D92A64DF39000DC4D0 /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
+		88C7D8DB2A64DF90000DC4D0 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		88D321312A625A1500BBE0FA /* GameInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInteractorMock.swift; sourceTree = "<group>"; };
 		88D321342A625C3200BBE0FA /* GameFavoriteUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFavoriteUseCaseTest.swift; sourceTree = "<group>"; };
 		88D321362A625CE800BBE0FA /* GameFavoriteInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFavoriteInteractorMock.swift; sourceTree = "<group>"; };
@@ -616,6 +620,8 @@
 				888BFAFE2A55A9AE002E281C /* UIView+Ext.swift */,
 				881D886A2A585C35008D9D87 /* String+Ext.swift */,
 				8875DA172A5B1C52004C0660 /* Realm+Results+Ext.swift */,
+				88C7D8D92A64DF39000DC4D0 /* Optional+Ext.swift */,
+				88C7D8DB2A64DF90000DC4D0 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -852,6 +858,7 @@
 				888BFADB2A55427A002E281C /* GameDetailUseCase.swift in Sources */,
 				881D886E2A5861FE008D9D87 /* GameDetailRouter.swift in Sources */,
 				88971A872A53264F0019ABFC /* AppDelegate.swift in Sources */,
+				88C7D8DA2A64DF39000DC4D0 /* Optional+Ext.swift in Sources */,
 				8875D9FC2A5A8FF3004C0660 /* ProfileModel.swift in Sources */,
 				8875DA162A5B13FC004C0660 /* ProfileCacheModel.swift in Sources */,
 				88971AD92A533BDA0019ABFC /* ApiEndpointProtocol+Ext.swift in Sources */,
@@ -880,6 +887,7 @@
 				888BFAE52A5548C7002E281C /* MainTabBarController.swift in Sources */,
 				888BFACB2A53E4AD002E281C /* GameModel.swift in Sources */,
 				8889C7AD2A5696D000954EC2 /* GameFavoriteViewController.swift in Sources */,
+				88C7D8DC2A64DF90000DC4D0 /* UIViewController+Ext.swift in Sources */,
 				888BFADD2A554354002E281C /* GameInteractor.swift in Sources */,
 				8875DA072A5ADA0B004C0660 /* ProfileInteractor.swift in Sources */,
 				8875DA112A5B0560004C0660 /* EditProfileViewModel.swift in Sources */,

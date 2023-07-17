@@ -146,11 +146,6 @@ class GameDetailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = GameInfoAlert.alert(title: title, message: message)
-        self.present(alert, animated: true)
-    }
-    
     private func updateUI(with gameDetailModel: GameDetailModel?) {
         guard let gameDetailModel = gameDetailModel else {
             return
@@ -172,20 +167,7 @@ class GameDetailViewController: UIViewController {
         
         titleLabel.text = gameDetailModel.name
         ratingLabel.text = String(gameDetailModel.rating ?? 0.0)
-        ratingLogo.image = {
-            guard let rating = gameDetailModel.rating else {
-                return UIImage(systemName: "star.fill")
-            }
-            
-            switch rating {
-            case 4.0 ... 5.0:
-                return UIImage(systemName: "star.fill")
-            case 2.59 ... 3.99:
-                return UIImage(systemName: "star.leadinghalf.filled")
-            default:
-                return UIImage(systemName: "star")
-            }
-        }()
+        ratingLogo.image = gameDetailModel.rating.getRatingImage()
         
         platformsStackView.removeFullyAllArrangedSubviews()
         if let images = gameDetailModel.platformImages {

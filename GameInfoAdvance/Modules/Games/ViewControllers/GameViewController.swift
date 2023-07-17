@@ -209,11 +209,6 @@ class GameViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func showAlert(title: String, message: String) {
-        let alert = GameInfoAlert.alert(title: title, message: message)
-        self.present(alert, animated: true)
-    }
-    
 }
 
 extension GameViewController: UITableViewDataSource {
