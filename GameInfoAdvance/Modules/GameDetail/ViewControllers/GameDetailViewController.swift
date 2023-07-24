@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SDWebImage
+import CommonPackage
 
 class GameDetailViewController: UIViewController {
 

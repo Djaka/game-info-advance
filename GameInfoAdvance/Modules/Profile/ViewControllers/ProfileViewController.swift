@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import RxSwift
+import CommonPackage
 
 class ProfileViewController: UIViewController {
 

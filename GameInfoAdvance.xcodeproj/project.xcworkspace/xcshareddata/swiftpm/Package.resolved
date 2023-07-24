@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "game-common",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Djaka/game-common",
+      "state" : {
+        "revision" : "fc6bb099e4f8e36ae9d04eed4cce7e6858ecfd5e",
+        "version" : "3.0.3"
+      }
+    },
+    {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",

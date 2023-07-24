@@ -15,3 +15,15 @@ protocol APIEndpointProtocol {
     var httpMethod: HTTPMethod { get }
     var parameterEncoding: ParameterEncoding { get }
 }
+
+extension APIEndpointProtocol {
+    func getDefaultparameter(authenticated: Bool = true) -> [String: Any] {
+        var httpHeader: [String: String] = [:]
+        
+        if authenticated {
+            httpHeader["key"] = APIConstants.sharedInstance.apiKey
+        }
+        
+        return httpHeader
+    }
+}
