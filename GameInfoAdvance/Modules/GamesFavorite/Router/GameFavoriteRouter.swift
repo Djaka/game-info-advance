@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import Core
+import Favorite
 
 class GameFavoriteRouter {
     static func createModule() -> UIViewController {
-        let gameFavoriteUseCase = Injection.init().provideGameFavorite()
-        let gameFavoriteViewModel = GameFavoriteViewModel(gameFavoriteUseCase: gameFavoriteUseCase)
+        let gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
+        > = Injection.init().provideGameFavorite()
+        
+        let gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
+        > = Injection.init().provideGameRemoveFavorite()
+        
+        let gameFavoriteViewModel = GameFavoriteViewModel(gameFavoriteUseCase: gameFavoriteUseCase, gameFavoriteRemoveUseCase: gameFavoriteRemoveUseCase)
         let viewController = GameFavoriteViewController(gameFavoriteViewModel: gameFavoriteViewModel)
         return viewController
     }

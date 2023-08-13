@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import RxSwift
+import Profile
 
 class EditProfileViewController: UIViewController {
 
@@ -23,7 +24,7 @@ class EditProfileViewController: UIViewController {
     private var editProfileViewModel: EditProfileViewModel?
     private var router = EditProfileRouter()
     private var disposeBag = DisposeBag()
-    private var profileModel = ProfileModel()
+    private var profileModel = ProfileDomainModel()
     
     convenience init(editProfileViewModel: EditProfileViewModel) {
         self.init()
@@ -126,7 +127,7 @@ class EditProfileViewController: UIViewController {
         editProfileViewModel.updateProfile(profileModel: profileModel)
     }
     
-    private func updateUI(with profileModel: ProfileModel?) {
+    private func updateUI(with profileModel: ProfileDomainModel?) {
         guard let profileModel = profileModel else {
             return
         }

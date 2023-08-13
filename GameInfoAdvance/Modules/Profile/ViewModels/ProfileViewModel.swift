@@ -8,10 +8,12 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Core
+import Profile
 
 class ProfileViewModel {
     
-    var profileObservable: Observable<ProfileModel?> {
+    var profileObservable: Observable<ProfileDomainModel?> {
         profile.asObservable()
     }
     
@@ -19,18 +21,20 @@ class ProfileViewModel {
         error.asObservable()
     }
     
-    private let profile = BehaviorRelay<ProfileModel?>(value: nil)
+    private let profile = BehaviorRelay<ProfileDomainModel?>(value: nil)
     private let error = PublishSubject<Error>()
     
-    private var profileUseCase: ProfileUseCase
+    private var profileUseCase: GetViewModel<Any, ProfileDomainModel, Interactor<Any, ProfileDomainModel, ProfileRepository<ProfileRemoteDataSource, ProfileLocalDataSource, ProfileTransformer>>>
+    
     private var disposeBag = DisposeBag()
     
-    init(profileUseCase: ProfileUseCase) {
-        self.profileUseCase = profileUseCase
+    init(profileUseCase: Interactor<Any, ProfileDomainModel, ProfileRepository<ProfileRemoteDataSource, ProfileLocalDataSource, ProfileTransformer>>
+    ) {
+        self.profileUseCase = GetViewModel(useCase: profileUseCase)
     }
     
     func getProfile() {
-        profileUseCase.getProfile()
+        profileUseCase.getViewModel(request: nil)
             .subscribe(onNext: { profile in
                 self.profile.accept(profile)
             }

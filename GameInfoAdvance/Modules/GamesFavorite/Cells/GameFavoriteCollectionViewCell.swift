@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import Common
+import Favorite
 
 class GameFavoriteCollectionViewCell: UICollectionViewCell {
 
@@ -23,14 +25,14 @@ class GameFavoriteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var gameFavoriteModel: GameFavoriteModel?
+    var gameFavoriteModel: FavoriteDomainModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configureCell(gameFavoriteModel: GameFavoriteModel = GameFavoriteModel()) {
+    func configureCell(gameFavoriteModel: FavoriteDomainModel = FavoriteDomainModel()) {
         self.gameFavoriteModel = gameFavoriteModel
         
         containerImageView.layer.cornerRadius = 10

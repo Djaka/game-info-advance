@@ -8,7 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import CommonPackage
+import Common
+import Games
 
 class GameViewController: UIViewController {
 
@@ -18,7 +19,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var refreshView: UIView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
-    private var gameViewModel: GameViewModel?
+    var gameViewModel: GameViewModel?
     
     private let disposeBag = DisposeBag()
     private let router = GameRouter()
@@ -27,7 +28,7 @@ class GameViewController: UIViewController {
     
     convenience init(gameViewModel: GameViewModel) {
         self.init()
-        
+
         self.gameViewModel = gameViewModel
     }
     
@@ -152,8 +153,8 @@ class GameViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func saveFavoriteGame(with gameModel: GameModel) {
-        
+    private func saveFavoriteGame(with gameModel: GameDomainModel) {
+
         guard let viewModel = gameViewModel else {
             return
         }
@@ -181,12 +182,12 @@ class GameViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func removeFavorite(with gameModel: GameModel) {
-        
+    private func removeFavorite(with gameModel: GameDomainModel) {
+
         guard let viewModel = gameViewModel else {
             return
         }
-        
+
         viewModel.removeFavoriteGame(with: gameModel)
     }
     

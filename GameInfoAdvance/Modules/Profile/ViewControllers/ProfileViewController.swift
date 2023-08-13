@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 import RxSwift
-import CommonPackage
+import Profile
 
 class ProfileViewController: UIViewController {
 
@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func updateUI(with profileModel: ProfileModel?) {
+    private func updateUI(with profileModel: ProfileDomainModel?) {
         guard let profileModel = profileModel else {
             return
         }
@@ -99,9 +99,6 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func changeProfile(_ sender: Any) {
-//        let editProfileViewController = EditProfileViewController()
-//        navigationController?.pushViewController(editProfileViewController, animated: true)
-        
         router.pushToEditProfile(with: self)
     }
 }

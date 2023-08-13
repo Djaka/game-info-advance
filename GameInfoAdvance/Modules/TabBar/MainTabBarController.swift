@@ -81,10 +81,10 @@ class MainTabBarController: UITabBarController {
         
         gameViewController.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller"), tag: 0)
         gameViewController.tabBarItem.selectedImage = UIImage(systemName: "gamecontroller.fill")
-        
+//
         gameFavoriteViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart"), tag: 0)
         gameFavoriteViewController.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
-        
+//
         profileViewController.tabBarItem = UITabBarItem(title: "About", image: UIImage(systemName: "person"), tag: 1)
         profileViewController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         

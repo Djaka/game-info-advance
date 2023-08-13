@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Games
 
 class GameTableViewCell: UITableViewCell {
 
@@ -28,7 +29,7 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteView: UIView!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    private var gameModel: GameModel?
+    private var gameModel: GameDomainModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,7 +44,7 @@ class GameTableViewCell: UITableViewCell {
         favoriteView.clipsToBounds = true
     }
     
-    func configureCell(gameModel: GameModel) {
+    func configureCell(gameModel: GameDomainModel) {
         self.gameModel = gameModel
         
         SDWebImageDownloader.shared.config.downloadTimeout = 300

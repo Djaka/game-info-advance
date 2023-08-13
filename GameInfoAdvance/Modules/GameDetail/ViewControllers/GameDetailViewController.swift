@@ -9,7 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SDWebImage
-import CommonPackage
+import Games
+import SkeletonView
 
 class GameDetailViewController: UIViewController {
 
@@ -29,7 +30,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     
     private var gameDetailViewModel: GameDetailViewModel?
-    private var gameDetailModel = GameDetailModel()
+    private var gameDetailModel = GameDetailDomainModel()
     
     private let router = GameDetailRouter()
     private let disposeBag = DisposeBag()
@@ -97,9 +98,12 @@ class GameDetailViewController: UIViewController {
     
     private func bindDetailGame(with gameDetailViewModel: GameDetailViewModel) {
         gameDetailViewModel.gameDetailObservable
-            .observe(on: MainScheduler.instance)
+            .delay(RxTimeInterval.seconds(3), scheduler: MainScheduler.instance)
             .subscribe(onNext: { gameDetailModel in
-                self.updateUI(with: gameDetailModel)
+                if gameDetailModel != nil {
+                    self.updateUI(with: gameDetailModel)
+//                    self.hideLoading()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -147,7 +151,7 @@ class GameDetailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func updateUI(with gameDetailModel: GameDetailModel?) {
+    private func updateUI(with gameDetailModel: GameDetailDomainModel?) {
         guard let gameDetailModel = gameDetailModel else {
             return
         }
@@ -207,7 +211,7 @@ class GameDetailViewController: UIViewController {
         }
     }
     
-    private func saveFavoriteGame(with gameDetailModel: GameDetailModel) {
+    private func saveFavoriteGame(with gameDetailModel: GameDetailDomainModel) {
         
         guard let gameDetailViewModel = gameDetailViewModel else {
             return
@@ -216,7 +220,7 @@ class GameDetailViewController: UIViewController {
         gameDetailViewModel.addToFavoriteGame(with: gameDetailModel)
     }
     
-    private func removeFavorite(with gameDetailModel: GameDetailModel) {
+    private func removeFavorite(with gameDetailModel: GameDetailDomainModel) {
         
         guard let gameDetailViewModel = gameDetailViewModel else {
             return

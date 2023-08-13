@@ -8,8 +8,30 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Core
+import Favorite
 
-class GameFavoriteViewModel {
+public class GameFavoriteViewModel {
+    
+    private var gameFavoriteUseCase: GetViewModel<String,
+                                                  [FavoriteDomainModel],
+                                                  Interactor<String,
+                                                             [FavoriteDomainModel],
+                                                             FavoriteListRepository<
+                                                                FavoriteLocalDataSoruce,
+                                                                FavoritesTransformer>
+                                                  >
+    >
+    
+    private var gameFavoriteRemoveUseCase: GetViewModel<Int,
+                                                  Bool,
+                                                  Interactor<Int,
+                                                             Bool,
+                                                             FavoriteRemoveRepository<
+                                                                FavoriteLocalDataSoruce,
+                                                                FavoritesTransformer>
+                                                  >
+    >
     
     var loadingStateObservable: Observable<Bool> {
         loadingState.asObservable()
@@ -23,7 +45,7 @@ class GameFavoriteViewModel {
         error.asObserver()
     }
     
-    var successUnFavoritedObservable: Observable<(Bool, GameFavoriteModel, IndexPath)> {
+    var successUnFavoritedObservable: Observable<(Bool, FavoriteDomainModel, IndexPath)> {
         successUnFavorited.asObservable()
     }
     
@@ -36,21 +58,25 @@ class GameFavoriteViewModel {
     private let loadingState = BehaviorRelay<Bool>(value: true)
     private let reloadGameFavorite = PublishSubject<Void>()
     private let error = PublishSubject<String>()
-    private let successUnFavorited = PublishSubject<(Bool, GameFavoriteModel, IndexPath)>()
+    private let successUnFavorited = PublishSubject<(Bool, FavoriteDomainModel, IndexPath)>()
     private let showFavoritesEmpty = BehaviorRelay<Bool>(value: false)
     
     private let disposeBag = DisposeBag()
     
-    private var favorites: [GameFavoriteModel] = []
+    private var favorites: [FavoriteDomainModel] = []
     
-    private var gameFavoriteUseCase: GameFavoriteUseCase
-    
-    init(gameFavoriteUseCase: GameFavoriteUseCase) {
-        self.gameFavoriteUseCase = gameFavoriteUseCase
+    init(gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
+         gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>
+    ) {
+        self.gameFavoriteUseCase = GetViewModel(useCase: gameFavoriteUseCase)
+        self.gameFavoriteRemoveUseCase = GetViewModel(useCase: gameFavoriteRemoveUseCase)
     }
     
-    private func getFavorites() {
-        gameFavoriteUseCase.getFavoriteGames()
+    func getFavorites(keywoard: String = "") {
+        self.loadingState.accept(true)
+        
+        gameFavoriteUseCase.getViewModel(request: keywoard)
+            .observe(on: MainScheduler.instance)
             .delay(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { result in
                 self.favorites = result
@@ -65,31 +91,31 @@ class GameFavoriteViewModel {
     }
     
     private func getFavorites(with keywoard: String) {
-        gameFavoriteUseCase.searchFavoriteGame(keywoard: keywoard)
-            .delay(.milliseconds(500), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { result in
-                self.favorites = result
-                self.reloadGameFavorite.onNext(())
-                self.showFavoritesEmpty.accept(result.isEmpty)
-            }, onError: {error in
-                self.error.onNext(error.localizedDescription)
-            }, onCompleted: {
-                self.loadingState.accept(false)
-            })
-            .disposed(by: disposeBag)
+//        gameFavoriteUseCase.searchFavoriteGame(keywoard: keywoard)
+//            .delay(.milliseconds(500), scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { result in
+//                self.favorites = result
+//                self.reloadGameFavorite.onNext(())
+//                self.showFavoritesEmpty.accept(result.isEmpty)
+//            }, onError: {error in
+//                self.error.onNext(error.localizedDescription)
+//            }, onCompleted: {
+//                self.loadingState.accept(false)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     func searchFavoriteGame(keywoard: String) {
-        self.loadingState.accept(true)
-        if keywoard.isEmpty {
-            getFavorites()
-        } else {
-            getFavorites(with: keywoard)
-        }
+//        self.loadingState.accept(true)
+//        if keywoard.isEmpty {
+//            getFavorites()
+//        } else {
+//            getFavorites(with: keywoard)
+//        }
     }
     
-    func removeFavoriteGame(with gameFavoriteModel: GameFavoriteModel, indexPath: IndexPath) {
-        gameFavoriteUseCase.removeFavoriteGame(with: gameFavoriteModel.id ?? 0)
+    func removeFavoriteGame(with gameFavoriteModel: FavoriteDomainModel, indexPath: IndexPath) {
+        gameFavoriteRemoveUseCase.getViewModel(request: gameFavoriteModel.id ?? 0)
             .subscribe(onNext: { success in
                 self.favorites.remove(at: indexPath.row)
                 self.successUnFavorited.onNext((success, gameFavoriteModel, indexPath))
@@ -102,7 +128,7 @@ class GameFavoriteViewModel {
         return favorites.count
     }
     
-    func getFavoriteGame(by index: Int) -> GameFavoriteModel {
+    func getFavoriteGame(by index: Int) -> FavoriteDomainModel {
         return favorites[index]
     }
     

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Favorite
 
 class GameFavoriteViewController: UIViewController {
     
@@ -85,7 +86,7 @@ class GameFavoriteViewController: UIViewController {
         viewModel.refreshPage()
     }
     
-    private func removeFavorite(with gameFavoriteModel: GameFavoriteModel, indexPath: IndexPath) {
+    private func removeFavorite(with gameFavoriteModel: FavoriteDomainModel, indexPath: IndexPath) {
         
         guard let viewModel = gameFavoriteViewModel else {
             return
@@ -161,7 +162,7 @@ class GameFavoriteViewController: UIViewController {
         searchTextField.rx.text
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { keywoard in
-                viewModel.searchFavoriteGame(keywoard: keywoard ?? "")
+                viewModel.getFavorites(keywoard: keywoard ?? "")
             })
             .disposed(by: disposeBag)
     }

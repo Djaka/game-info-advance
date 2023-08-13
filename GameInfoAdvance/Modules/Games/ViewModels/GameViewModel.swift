@@ -8,8 +8,41 @@
 import Foundation
 import RxSwift
 import RxRelay
+import Core
+import Games
+import Favorite
 
-class GameViewModel {
+public class GameViewModel {
+    private var gameUseCase: GetViewModel<GameParameterRequest,
+                                        [GameDomainModel],
+                                        Interactor<GameParameterRequest,
+                                                   [GameDomainModel],
+                                                   GameListRepository<
+                                                        GetListGameRemoteDataSource,
+                                                        FavoriteLocalDataSoruce,
+                                                        GamesTransformer>
+                                        >
+    >
+    
+    private var gameFavoriteRemoveUseCase: GetViewModel<Int,
+                                                  Bool,
+                                                  Interactor<Int,
+                                                             Bool,
+                                                             FavoriteRemoveRepository<
+                                                                FavoriteLocalDataSoruce,
+                                                                FavoritesTransformer>
+                                                  >
+    >
+    
+    private var gameFavoriteAddUseCase: GetViewModel<FavoriteEntityModel,
+                                                  Bool,
+                                                  Interactor<FavoriteEntityModel,
+                                                             Bool,
+                                                             FavoriteAddRepository<
+                                                                FavoriteLocalDataSoruce,
+                                                                FavoritesTransformer>
+                                                  >
+    >
     
     var loadingStateObservable: Observable<Bool> {
         loadingState.asObservable()
@@ -27,37 +60,44 @@ class GameViewModel {
         loadingFooter.asObservable()
     }
     
-    var successFavoritedObservable: Observable<(Bool, GameModel)> {
+    var successFavoritedObservable: Observable<(Bool, GameDomainModel)> {
         successFavorited.asObservable()
     }
     
-    var successUnFavoritedObservable: Observable<(Bool, GameModel)> {
+    var successUnFavoritedObservable: Observable<(Bool, GameDomainModel)> {
         successUnFavorited.asObservable()
     }
-    
-    private var gameUseCase: GameUseCase
     
     private let loadingState = BehaviorRelay<Bool>(value: true)
     private let reloadGames = PublishSubject<Void>()
     private let error = PublishSubject<String>()
     private let loadingFooter = BehaviorRelay<Bool>(value: false)
-    private let successFavorited = PublishSubject<(Bool, GameModel)>()
-    private let successUnFavorited = PublishSubject<(Bool, GameModel)>()
-    private var games: [GameModel] = []
+    private let successFavorited = PublishSubject<(Bool, GameDomainModel)>()
+    private let successUnFavorited = PublishSubject<(Bool, GameDomainModel)>()
+    private var games: [GameDomainModel] = []
     
     private var isLoading = false
     private var page = 1
     private var pageSize = 10
     private var keywoard = ""
+    private var favoriteTransformer: FavoritesTransformer
     
     private var disposeBag = DisposeBag()
     
-    init(gameUseCase: GameUseCase) {
-        self.gameUseCase = gameUseCase
+    init(gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, FavoriteLocalDataSoruce, GamesTransformer>>,
+         gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
+         gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
+         favoriteTransformer: FavoritesTransformer = FavoritesTransformer()
+    ) {
+        self.gameUseCase = GetViewModel(useCase: gameUseCase)
+        self.gameFavoriteRemoveUseCase = GetViewModel(useCase: gameFavoriteRemoveUseCase)
+        self.gameFavoriteAddUseCase = GetViewModel(useCase: gameFavoriteAddUseCase)
+        self.favoriteTransformer = favoriteTransformer
     }
     
     private func getGames(page: Int, pageSize: Int, search: String = "") {
-        gameUseCase.getGames(page: page, pageSize: pageSize, search: search)
+        let params = GameParameterRequest(page: page, pageSize: pageSize, search: search)
+        gameUseCase.getViewModel(request: params)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { games in
                 let myGames = self.games + games
@@ -103,8 +143,18 @@ class GameViewModel {
         self.getGames(page: self.page, pageSize: self.pageSize, search: self.keywoard)
     }
     
-    func addToFavoriteGame(with gameModel: GameModel) {
-        gameUseCase.addFavoriteGame(gameModel)
+    func addToFavoriteGame(with gameModel: GameDomainModel) {
+        
+        let favoriteEntityModel = FavoriteEntityModel()
+        favoriteEntityModel.id = gameModel.id ?? 0
+        favoriteEntityModel.slug = gameModel.slug ?? ""
+        favoriteEntityModel.name = gameModel.name ?? ""
+        favoriteEntityModel.released = gameModel.released ?? ""
+        favoriteEntityModel.backgroundImage = gameModel.backgroundImage ?? ""
+        favoriteEntityModel.rating = gameModel.rating ?? 0.0
+        
+        gameFavoriteAddUseCase.getViewModel(request: favoriteEntityModel)
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { success in
                 self.games.first(where: { $0.id == gameModel.id })?.isFavorite = true
                 self.successFavorited.onNext((success, gameModel))
@@ -113,9 +163,8 @@ class GameViewModel {
             
     }
     
-    func removeFavoriteGame(with gameModel: GameModel) {
-        gameUseCase.removeFavoriteGame(with: gameModel.id ?? 0)
-            .subscribe(onNext: { success in
+    func removeFavoriteGame(with gameModel: GameDomainModel) {
+        gameFavoriteRemoveUseCase.getViewModel(request: gameModel.id ?? 0).subscribe(onNext: { success in
                 self.games.first(where: { $0.id == gameModel.id })?.isFavorite = false
                 self.successUnFavorited.onNext((success, gameModel))
             })
@@ -126,7 +175,7 @@ class GameViewModel {
         return games.count
     }
     
-    func getGame(by index: Int) -> GameModel {
+    func getGame(by index: Int) -> GameDomainModel {
         return games[index]
     }
 }
