@@ -16,8 +16,7 @@ public class FavoriteAddRepository<
     FavoriteLocalDataSoruce.Response == FavoriteEntityModel,
     FavoriteLocalDataSoruce.Request == Any,
     Transformer.Entity == FavoriteEntityModel,
-    Transformer.Domain == FavoriteDomainModel
-{
+    Transformer.Domain == FavoriteDomainModel {
 
     public typealias Request = FavoriteEntityModel
     public typealias Response = Bool

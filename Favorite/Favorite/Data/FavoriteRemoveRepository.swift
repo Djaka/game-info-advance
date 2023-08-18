@@ -16,8 +16,7 @@ public class FavoriteRemoveRepository<
     FavoriteLocalDataSoruce.Response == FavoriteEntityModel,
     FavoriteLocalDataSoruce.Request == Any,
     Transformer.Entity == FavoriteEntityModel,
-    Transformer.Domain == FavoriteDomainModel
-{
+    Transformer.Domain == FavoriteDomainModel {
 
     public typealias Request = Int
     public typealias Response = Bool

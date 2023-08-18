@@ -1,0 +1,22 @@
+disabled_rules:
+   - control_statement
+   - trailing_whitespace
+   - force_cast
+   - force_unwrapping
+   - force_try
+   - large_tuple
+   - redundant_string_enum_value
+   - identifier_name
+   - type_name
+   - type_body_length
+line_length:
+    warning: 250
+    error: 300
+    ignores_comments: true
+generic_type_name:
+    min_length: 1
+    max_length: 50
+excluded:
+- Carthage
+- Pods
+- GameInfoAdvanceTest

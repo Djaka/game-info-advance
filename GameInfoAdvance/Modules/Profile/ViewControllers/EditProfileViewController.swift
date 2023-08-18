@@ -101,7 +101,7 @@ class EditProfileViewController: UIViewController {
     private func bindSuccessUpdate(with editProfileViewModel: EditProfileViewModel) {
         editProfileViewModel.errorObservable
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { success in
+            .subscribe(onNext: { _ in
                 self.showAlert(title: "Success", message: "Update success")
                 self.router.backToPreviousePage(with: self)
             })

@@ -11,10 +11,9 @@ import RxSwift
 
 public class ProfileEditRepository<
     ProfileLocalDataSource: LocalDataSource
-> :Repository where
+>: Repository where
     ProfileLocalDataSource.Response == ProfileEntityModel,
-    ProfileLocalDataSource.Request == Any
-{
+    ProfileLocalDataSource.Request == Any {
     
     public typealias Request = ProfileEntityModel
     public typealias Response = Bool

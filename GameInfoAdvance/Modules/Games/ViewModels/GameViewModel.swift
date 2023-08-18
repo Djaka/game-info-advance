@@ -19,7 +19,6 @@ public class GameViewModel {
                                                    [GameDomainModel],
                                                    GameListRepository<
                                                         GetListGameRemoteDataSource,
-                                                        FavoriteLocalDataSoruce,
                                                         GamesTransformer>
                                         >
     >
@@ -39,6 +38,16 @@ public class GameViewModel {
                                                   Interactor<FavoriteEntityModel,
                                                              Bool,
                                                              FavoriteAddRepository<
+                                                                FavoriteLocalDataSoruce,
+                                                                FavoritesTransformer>
+                                                  >
+    >
+    
+    private var gameFavoriteUseCase: GetViewModel<String,
+                                                  [FavoriteDomainModel],
+                                                  Interactor<String,
+                                                             [FavoriteDomainModel],
+                                                             FavoriteListRepository<
                                                                 FavoriteLocalDataSoruce,
                                                                 FavoritesTransformer>
                                                   >
@@ -84,20 +93,45 @@ public class GameViewModel {
     
     private var disposeBag = DisposeBag()
     
-    init(gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, FavoriteLocalDataSoruce, GamesTransformer>>,
+    init(gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, GamesTransformer>>,
          gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
          gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
+         gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
          favoriteTransformer: FavoritesTransformer = FavoritesTransformer()
     ) {
         self.gameUseCase = GetViewModel(useCase: gameUseCase)
         self.gameFavoriteRemoveUseCase = GetViewModel(useCase: gameFavoriteRemoveUseCase)
         self.gameFavoriteAddUseCase = GetViewModel(useCase: gameFavoriteAddUseCase)
+        self.gameFavoriteUseCase = GetViewModel(useCase: gameFavoriteUseCase)
         self.favoriteTransformer = favoriteTransformer
     }
     
     private func getGames(page: Int, pageSize: Int, search: String = "") {
         let params = GameParameterRequest(page: page, pageSize: pageSize, search: search)
-        gameUseCase.getViewModel(request: params)
+        
+        Observable.combineLatest(gameFavoriteUseCase.getViewModel(request: nil).asObservable(), gameUseCase.getViewModel(request: params).asObservable())
+            .map { (favorites, games) -> [GameDomainModel] in
+                
+                return games.map { gameResponse in
+                    var isFavorite = false
+                    if favorites.contains(where: {$0.id == gameResponse.id}) {
+                        isFavorite = true
+                    }
+                    
+                    let domainModel = GameDomainModel(
+                        id: gameResponse.id ?? 0,
+                        slug: gameResponse.slug ?? "",
+                        name: gameResponse.name ?? "",
+                        released: gameResponse.released ?? "",
+                        backgroundImage: gameResponse.backgroundImage ?? "",
+                        rating: gameResponse.rating ?? 0.0,
+                        isFavorite: isFavorite,
+                        platformImages: gameResponse.platformImages ?? []
+                    )
+                    
+                    return domainModel
+                }
+            }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { games in
                 let myGames = self.games + games
@@ -134,7 +168,7 @@ public class GameViewModel {
         self.getGames(page: page, pageSize: self.pageSize)
     }
     
-    func searchGame(_ kewoard : String) {
+    func searchGame(_ kewoard: String) {
         self.games = []
         self.loadingState.accept(true)
         self.loadingFooter.accept(false)

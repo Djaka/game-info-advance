@@ -12,7 +12,7 @@ import Favorite
 
 class GameRouter {
     static func createModule() -> UIViewController {
-        let gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, FavoriteLocalDataSoruce, GamesTransformer>
+        let gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, GamesTransformer>
         > = Injection.init().provideGames()
         
         let gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
@@ -21,7 +21,15 @@ class GameRouter {
         let gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
         > = Injection.init().provideGameAddFavorite()
         
-        let gameViewModel = GameViewModel(gameUseCase: gameUseCase, gameFavoriteRemoveUseCase: gameFavoriteRemoveUseCase, gameFavoriteAddUseCase: gameFavoriteAddUseCase)
+        let gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
+        > = Injection.init().provideGameFavorite()
+        
+        let gameViewModel = GameViewModel(
+            gameUseCase: gameUseCase,
+            gameFavoriteRemoveUseCase: gameFavoriteRemoveUseCase,
+            gameFavoriteAddUseCase: gameFavoriteAddUseCase,
+            gameFavoriteUseCase: gameFavoriteUseCase
+        )
         
         let viewController = GameViewController(gameViewModel: gameViewModel)
         return viewController
@@ -29,7 +37,8 @@ class GameRouter {
     
     func pushToDetail(with view: UIViewController, gameId: Int) {
         let detailViewController = GameDetailRouter.createModule(with: gameId)
-        let viewController = view as! GameViewController
-        viewController.navigationController?.pushViewController(detailViewController, animated: true)
+        if let viewController = view as? GameViewController {
+            viewController.navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
 }

@@ -24,7 +24,8 @@ class EditProfileRouter {
     }
 //
     func backToPreviousePage(with view: UIViewController) {
-        let viewController = view as! EditProfileViewController
-        viewController.navigationController?.popToRootViewController(animated: true)
+        if let viewController = view as? EditProfileViewController {
+            viewController.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }

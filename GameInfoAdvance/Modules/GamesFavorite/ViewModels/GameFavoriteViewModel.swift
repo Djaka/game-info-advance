@@ -50,7 +50,7 @@ public class GameFavoriteViewModel {
     }
     
     var showFavoritesEmptyObservable: Observable<Bool> {
-        showFavoritesEmpty.asObservable().map{ show in
+        showFavoritesEmpty.asObservable().map { show in
             return !show
         }
     }
@@ -88,30 +88,6 @@ public class GameFavoriteViewModel {
                 self.loadingState.accept(false)
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func getFavorites(with keywoard: String) {
-//        gameFavoriteUseCase.searchFavoriteGame(keywoard: keywoard)
-//            .delay(.milliseconds(500), scheduler: MainScheduler.instance)
-//            .subscribe(onNext: { result in
-//                self.favorites = result
-//                self.reloadGameFavorite.onNext(())
-//                self.showFavoritesEmpty.accept(result.isEmpty)
-//            }, onError: {error in
-//                self.error.onNext(error.localizedDescription)
-//            }, onCompleted: {
-//                self.loadingState.accept(false)
-//            })
-//            .disposed(by: disposeBag)
-    }
-    
-    func searchFavoriteGame(keywoard: String) {
-//        self.loadingState.accept(true)
-//        if keywoard.isEmpty {
-//            getFavorites()
-//        } else {
-//            getFavorites(with: keywoard)
-//        }
     }
     
     func removeFavoriteGame(with gameFavoriteModel: FavoriteDomainModel, indexPath: IndexPath) {

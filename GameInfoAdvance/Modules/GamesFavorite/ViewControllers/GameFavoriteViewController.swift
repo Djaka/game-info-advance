@@ -139,7 +139,7 @@ class GameFavoriteViewController: UIViewController {
                 
                 self.gameFavoriteCollectionView.performBatchUpdates({
                     self.gameFavoriteCollectionView.deleteItems(at: [indexPath])
-                }) { _ in
+                    }) { _ in
                     self.gameFavoriteCollectionView.reloadData()
                 }
                 
@@ -194,17 +194,21 @@ extension GameFavoriteViewController: UICollectionViewDataSource {
 
 extension GameFavoriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
         
         return UIEdgeInsets(top: 1.0, left: 10.0, bottom: 1.0, right: 10.0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                       layout collectionViewLayout: UICollectionViewLayout,
-                       sizeForItemAt indexPath: IndexPath) -> CGSize {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         
-        let lay = collectionViewLayout as! UICollectionViewFlowLayout
+        guard let lay = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
         let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
         return CGSize(width: widthPerItem-10, height: 215)
     }

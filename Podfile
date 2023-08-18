@@ -11,13 +11,13 @@ project 'GameInfoAdvance'
 
 def module_pods
   pod "Common", :git=>"https://github.com/Djaka/game-common", :tag=>"1.0.1"
-  pod "Core", :git=>"https://github.com/Djaka/game-core", :tag=>"1.1.4"
+  pod "Core", :git=>"https://github.com/Djaka/game-core", :tag=>"1.1.5"
 end
 
 target 'GameInfoAdvance' do
   module_pods
   pod 'SDWebImage'
-  pod "Shimmer", :git=>"https://github.com/Djaka/Shimmer", :tag=>"1.0.0"
+  pod "SkeletonView"
 end
 
 target 'Games' do

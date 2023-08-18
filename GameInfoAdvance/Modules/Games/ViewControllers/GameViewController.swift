@@ -17,7 +17,23 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var refreshView: UIView!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var shimmerView: UIView!
+    @IBOutlet weak var shimmer1: UIView!
+    @IBOutlet weak var shimmer2: UIView!
+    @IBOutlet weak var shimmer3: UIView!
+    @IBOutlet weak var shimmer4: UIView!
+    @IBOutlet weak var shimmer5: UIView!
+    @IBOutlet weak var shimmer6: UIView!
+    @IBOutlet weak var shimmer7: UIView!
+    @IBOutlet weak var shimmer8: UIView!
+    @IBOutlet weak var shimmer9: UIView!
+    @IBOutlet weak var shimmer10: UIView!
+    @IBOutlet weak var shimmer11: UIView!
+    @IBOutlet weak var shimmer12: UIView!
+    @IBOutlet weak var shimmer13: UIView!
+    @IBOutlet weak var shimmer14: UIView!
+    @IBOutlet weak var shimmerContainer1: UIView!
+    @IBOutlet weak var shimmerContainer2: UIView!
     
     var gameViewModel: GameViewModel?
     
@@ -45,6 +61,7 @@ class GameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        setupShimmerView()
         refreshPage()
     }
     
@@ -63,6 +80,70 @@ class GameViewController: UIViewController {
             forCellReuseIdentifier: GameTableViewCell.identifier
         )
         gameTableView.separatorStyle = .none
+    }
+    
+    private func setupShimmerView() {
+        shimmerView.isHidden = false
+        shimmerContainer1.cornerRadius = 10
+        shimmerContainer1.clipsToBounds = true
+        
+        shimmer1.isSkeletonable = true
+        
+        shimmer2.isSkeletonable = true
+        shimmer2.skeletonCornerRadius = 8
+        
+        shimmer3.isSkeletonable = true
+        shimmer3.skeletonCornerRadius = 8
+        
+        shimmer4.isSkeletonable = true
+        shimmer4.skeletonCornerRadius = 8
+        
+        shimmer5.isSkeletonable = true
+        shimmer5.skeletonCornerRadius = 8
+        
+        shimmer6.isSkeletonable = true
+        shimmer6.skeletonCornerRadius = 8
+        
+        shimmer7.isSkeletonable = true
+        shimmer7.skeletonCornerRadius = 8
+        
+        shimmerContainer2.cornerRadius = 10
+        shimmerContainer2.clipsToBounds = true
+        
+        shimmer8.isSkeletonable = true
+        
+        shimmer9.isSkeletonable = true
+        shimmer9.skeletonCornerRadius = 8
+        
+        shimmer10.isSkeletonable = true
+        shimmer10.skeletonCornerRadius = 8
+        
+        shimmer11.isSkeletonable = true
+        shimmer11.skeletonCornerRadius = 8
+        
+        shimmer12.isSkeletonable = true
+        shimmer12.skeletonCornerRadius = 8
+        
+        shimmer13.isSkeletonable = true
+        shimmer13.skeletonCornerRadius = 8
+        
+        shimmer14.isSkeletonable = true
+        shimmer14.skeletonCornerRadius = 8
+        
+        shimmer1.showAnimatedGradientSkeleton()
+        shimmer2.showAnimatedGradientSkeleton()
+        shimmer3.showAnimatedGradientSkeleton()
+        shimmer4.showAnimatedGradientSkeleton()
+        shimmer5.showAnimatedGradientSkeleton()
+        shimmer6.showAnimatedGradientSkeleton()
+        shimmer7.showAnimatedGradientSkeleton()
+        shimmer8.showAnimatedGradientSkeleton()
+        shimmer9.showAnimatedGradientSkeleton()
+        shimmer10.showAnimatedGradientSkeleton()
+        shimmer11.showAnimatedGradientSkeleton()
+        shimmer12.showAnimatedGradientSkeleton()
+        shimmer13.showAnimatedGradientSkeleton()
+        shimmer14.showAnimatedGradientSkeleton()
     }
     
     private func bindViewModel() {
@@ -84,7 +165,8 @@ class GameViewController: UIViewController {
         viewModel.loadingStateObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { isShow in
-                self.loading.isHidden = !isShow
+                self.gameTableView.isHidden = isShow
+                self.shimmerView.isHidden = !isShow
             })
             .disposed(by: disposeBag)
     }
@@ -100,7 +182,7 @@ class GameViewController: UIViewController {
     
     private func bindScrollTableView(with viewModel: GameViewModel) {
             
-        gameTableView.rx.didScroll.subscribe{ [weak self] _ in
+        gameTableView.rx.didScroll.subscribe { [weak self] _ in
             
             guard let self = self else {
                 return

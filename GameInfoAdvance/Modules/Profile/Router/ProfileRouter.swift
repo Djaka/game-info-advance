@@ -21,7 +21,8 @@ class ProfileRouter {
 
     func pushToEditProfile(with view: UIViewController) {
         let editProfileViewController = EditProfileRouter.createModule()
-        let viewController = view as! ProfileViewController
-        viewController.navigationController?.pushViewController(editProfileViewController, animated: true)
+        if let viewController = view as? ProfileViewController {
+            viewController.navigationController?.pushViewController(editProfileViewController, animated: true)
+        }
     }
 }

@@ -8,9 +8,8 @@
 import Foundation
 import Core
 
-public struct GameDetailTransformer: Mapper {
+public struct GameDetailTransformer: RemoteMapper {
     public typealias Response = GameDetailResponse
-    public typealias Entity = GameEntityModel
     public typealias Domain = GameDetailDomainModel
     
     public init() {
@@ -40,14 +39,6 @@ public struct GameDetailTransformer: Mapper {
         return imageViews
     }
     
-    public func transformResponseToEntity(response: GameDetailResponse) -> GameEntityModel {
-        fatalError()
-    }
-    
-    public func transformEntityToDomain(entity: GameEntityModel) -> GameDetailDomainModel {
-        fatalError()
-    }
-    
     public func transformResponseToDomain(response: GameDetailResponse) -> GameDetailDomainModel {
         let gameDetailDomainModel = GameDetailDomainModel(
             id: response.id,
@@ -62,16 +53,5 @@ public struct GameDetailTransformer: Mapper {
         )
         
         return gameDetailDomainModel
-    }
-    
-    public func transformDomainToEntity(domain: GameDetailDomainModel) -> GameEntityModel {
-        let gameEntityModel = GameEntityModel()
-        gameEntityModel.id = domain.id ?? 0
-        gameEntityModel.name = domain.name ?? ""
-        gameEntityModel.released = domain.released ?? ""
-        gameEntityModel.backgroundImage = domain.backgroundImage ?? ""
-        gameEntityModel.rating = domain.rating ?? 0.0
-
-        return gameEntityModel
     }
 }

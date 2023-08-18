@@ -28,6 +28,17 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var scrollDetail: UIScrollView!
     @IBOutlet weak var favoriteView: UIView!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var shimmerContainerView: UIView!
+    @IBOutlet weak var shimmerView: UIView!
+    @IBOutlet weak var shimmer1: UIView!
+    @IBOutlet weak var shimmer2: UIView!
+    @IBOutlet weak var shimmer3: UIView!
+    @IBOutlet weak var shimmer4: UIView!
+    @IBOutlet weak var shimmer5: UIView!
+    @IBOutlet weak var shimmer6: UIView!
+    @IBOutlet weak var shimmer7: UIView!
+    @IBOutlet weak var shimmer8: UIView!
+    @IBOutlet weak var shimmer9: UIView!
     
     private var gameDetailViewModel: GameDetailViewModel?
     private var gameDetailModel = GameDetailDomainModel()
@@ -74,6 +85,47 @@ class GameDetailViewController: UIViewController {
         subBannerImage.layer.cornerRadius = 10
         subBannerImage.clipsToBounds = true
         
+        shimmerView.isHidden = false
+        setupShimmerView()
+    }
+    
+    private func setupShimmerView() {
+        shimmerView.isHidden = false
+        shimmer1.isSkeletonable = true
+        
+        shimmer2.isSkeletonable = true
+        shimmer2.skeletonCornerRadius = 8
+        
+        shimmer3.isSkeletonable = true
+        shimmer3.skeletonCornerRadius = 8
+        
+        shimmer4.isSkeletonable = true
+        shimmer4.skeletonCornerRadius = 8
+        
+        shimmer5.isSkeletonable = true
+        shimmer5.skeletonCornerRadius = 8
+        
+        shimmer6.isSkeletonable = true
+        shimmer6.skeletonCornerRadius = 8
+        
+        shimmer7.isSkeletonable = true
+        shimmer7.skeletonCornerRadius = 8
+        
+        shimmer8.isSkeletonable = true
+        shimmer8.skeletonCornerRadius = 8
+        
+        shimmer9.isSkeletonable = true
+        shimmer9.skeletonCornerRadius = 8
+        
+        shimmer1.showAnimatedGradientSkeleton()
+        shimmer2.showAnimatedGradientSkeleton()
+        shimmer3.showAnimatedGradientSkeleton()
+        shimmer4.showAnimatedGradientSkeleton()
+        shimmer5.showAnimatedGradientSkeleton()
+        shimmer6.showAnimatedGradientSkeleton()
+        shimmer7.showAnimatedGradientSkeleton()
+        shimmer8.showAnimatedGradientSkeleton()
+        shimmer9.showAnimatedGradientSkeleton()
     }
     
     private func bindViewModel() {
@@ -102,12 +154,11 @@ class GameDetailViewController: UIViewController {
             .subscribe(onNext: { gameDetailModel in
                 if gameDetailModel != nil {
                     self.updateUI(with: gameDetailModel)
-//                    self.hideLoading()
+                    self.shimmerView.isHidden = true
                 }
             })
             .disposed(by: disposeBag)
     }
-    
     
     private func bindSuccessFavorited(with gameDetailViewModel: GameDetailViewModel) {
         gameDetailViewModel.successFavoritedObservable

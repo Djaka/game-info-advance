@@ -40,7 +40,6 @@ class GameDetailViewModel {
                                                    GameDetailDomainModel,
                                                    GameDetailRepository<
                                                         GetDetailGameRemoteDataSoruce,
-                                                        FavoriteLocalDataSoruce,
                                                         GameDetailTransformer>>>
     
     private var gameFavoriteRemoveUseCase: GetViewModel<Int,
@@ -59,6 +58,16 @@ class GameDetailViewModel {
                                                                 FavoriteLocalDataSoruce,
                                                                 FavoritesTransformer>>>
     
+    private var gameFavoriteUseCase: GetViewModel<String,
+                                                  [FavoriteDomainModel],
+                                                  Interactor<String,
+                                                             [FavoriteDomainModel],
+                                                             FavoriteListRepository<
+                                                                FavoriteLocalDataSoruce,
+                                                                FavoritesTransformer>
+                                                  >
+    >
+    
     private var gameId: Int
     private let loadGameDetail = PublishSubject<Void>()
     private let loadingState = BehaviorRelay<Bool>(value: true)
@@ -69,20 +78,43 @@ class GameDetailViewModel {
     
     private var disposeBag = DisposeBag()
     
-    init(gameDetailUseCase: Interactor<Int,GameDetailDomainModel, GameDetailRepository<GetDetailGameRemoteDataSoruce, FavoriteLocalDataSoruce, GameDetailTransformer>>,
+    init(gameDetailUseCase: Interactor<Int, GameDetailDomainModel, GameDetailRepository<GetDetailGameRemoteDataSoruce, GameDetailTransformer>>,
          gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
          gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
+         gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
          gameId: Int) {
         
         self.gameDetailUseCase = GetViewModel(useCase: gameDetailUseCase)
         self.gameFavoriteAddUseCase = GetViewModel(useCase: gameFavoriteAddUseCase)
         self.gameFavoriteRemoveUseCase = GetViewModel(useCase: gameFavoriteRemoveUseCase)
+        self.gameFavoriteUseCase = GetViewModel(useCase: gameFavoriteUseCase)
         self.gameId = gameId
     }
     
     func getGameDetail() {
-        gameDetailUseCase.getViewModel(request: gameId)
-            .observe(on: MainScheduler.instance)
+        Observable.combineLatest(
+            gameDetailUseCase.getViewModel(request: gameId).asObservable(),
+            gameFavoriteUseCase.getViewModel(request: nil).asObservable()
+        ).map { (gameModel, gameFavorites) -> GameDetailDomainModel in
+            var isFavorite = false
+            if gameFavorites.contains(where: {$0.id == gameModel.id}) {
+                isFavorite = true
+            }
+
+            let gameDetailDomainModel = GameDetailDomainModel(
+                id: gameModel.id ?? 0,
+                slug: gameModel.slug ?? "",
+                name: gameModel.name ?? "",
+                released: gameModel.released ?? "",
+                backgroundImage: gameModel.backgroundImage ?? "",
+                backgroundImageAdditional: gameModel.backgroundImageAdditional ?? "",
+                rating: gameModel.rating ?? 0.0,
+                description: gameModel.description ?? "",
+                platformImages: gameModel.platformImages ?? [],
+                isFavorite: isFavorite
+            )
+            return gameDetailDomainModel
+        }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { gameDetailModel in
                 self.gameDetail.accept(gameDetailModel)
             }, onError: { error in

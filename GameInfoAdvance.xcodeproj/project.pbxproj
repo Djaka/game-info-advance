@@ -12,6 +12,13 @@
 		881D88692A5847A2008D9D87 /* GameDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D88682A5847A2008D9D87 /* GameDetailViewModel.swift */; };
 		881D886E2A5861FE008D9D87 /* GameDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D886D2A5861FE008D9D87 /* GameDetailRouter.swift */; };
 		882C0A412A7F639E007D4A64 /* GameParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C0A402A7F639E007D4A64 /* GameParameter.swift */; };
+		88571F1C2A8F099300A1D865 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88571F1B2A8F099300A1D865 /* UIView+Ext.swift */; };
+		88571F1E2A8F1C9200A1D865 /* Favorite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88571F1D2A8F1C9200A1D865 /* Favorite.framework */; };
+		88571F1F2A8F1C9200A1D865 /* Favorite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88571F1D2A8F1C9200A1D865 /* Favorite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		88571F212A8F1CA600A1D865 /* Games.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88571F202A8F1CA600A1D865 /* Games.framework */; };
+		88571F222A8F1CA600A1D865 /* Games.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88571F202A8F1CA600A1D865 /* Games.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		88571F242A8F1CB200A1D865 /* Profile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88571F232A8F1CB200A1D865 /* Profile.framework */; };
+		88571F252A8F1CB200A1D865 /* Profile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88571F232A8F1CB200A1D865 /* Profile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8875D9F42A5A7B33004C0660 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875D9F22A5A7B33004C0660 /* ProfileViewController.swift */; };
 		8875D9F52A5A7B33004C0660 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8875D9F32A5A7B33004C0660 /* ProfileViewController.xib */; };
 		8875DA032A5AD974004C0660 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875DA022A5AD974004C0660 /* ProfileViewModel.swift */; };
@@ -72,6 +79,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				88571F252A8F1CB200A1D865 /* Profile.framework in Embed Frameworks */,
+				88571F222A8F1CA600A1D865 /* Games.framework in Embed Frameworks */,
+				88571F1F2A8F1C9200A1D865 /* Favorite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +96,10 @@
 		881D88682A5847A2008D9D87 /* GameDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewModel.swift; sourceTree = "<group>"; };
 		881D886D2A5861FE008D9D87 /* GameDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailRouter.swift; sourceTree = "<group>"; };
 		882C0A402A7F639E007D4A64 /* GameParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameParameter.swift; sourceTree = "<group>"; };
+		88571F1B2A8F099300A1D865 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		88571F1D2A8F1C9200A1D865 /* Favorite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Favorite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88571F202A8F1CA600A1D865 /* Games.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Games.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88571F232A8F1CB200A1D865 /* Profile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Profile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8875D9F22A5A7B33004C0660 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8875D9F32A5A7B33004C0660 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8875DA022A5AD974004C0660 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +153,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88571F1E2A8F1C9200A1D865 /* Favorite.framework in Frameworks */,
+				88571F212A8F1CA600A1D865 /* Games.framework in Frameworks */,
+				88571F242A8F1CB200A1D865 /* Profile.framework in Frameworks */,
 				90C3109D1AB943C85B24B2A7 /* Pods_GameInfoAdvance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +222,14 @@
 				8875DA122A5B0D36004C0660 /* EditProfileRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		88763C182A8E732700BB2021 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88571F1B2A8F099300A1D865 /* UIView+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8889C7AF2A5696DB00954EC2 /* ViewControllers */ = {
@@ -384,6 +409,7 @@
 		88971AAE2A5329D20019ABFC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				88763C182A8E732700BB2021 /* Extensions */,
 				88971ADA2A533D210019ABFC /* APIConstants.swift */,
 				88971AAF2A5329E00019ABFC /* DI */,
 			);
@@ -470,6 +496,9 @@
 		A8E356C8B23C365567E3F867 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88571F232A8F1CB200A1D865 /* Profile.framework */,
+				88571F202A8F1CA600A1D865 /* Games.framework */,
+				88571F1D2A8F1C9200A1D865 /* Favorite.framework */,
 				5F728791918285F2E47156FA /* Pods_GameInfoAdvance.framework */,
 			);
 			name = Frameworks;
@@ -497,6 +526,7 @@
 				88971A812A53264F0019ABFC /* Resources */,
 				882C0A452A7F6CDE007D4A64 /* Embed Frameworks */,
 				D25EF92894FFF6320BEEA3AC /* [CP] Embed Pods Frameworks */,
+				88251D102A8E2A7E009FD62D /* swiftlint */,
 			);
 			buildRules = (
 			);
@@ -591,6 +621,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		88251D102A8E2A7E009FD62D /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		8DB978129A3F13EEBDA56349 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,6 +707,7 @@
 				88971A892A53264F0019ABFC /* SceneDelegate.swift in Sources */,
 				888BFAF72A554D97002E281C /* GameViewModel.swift in Sources */,
 				888BFAED2A554CBF002E281C /* GameViewController.swift in Sources */,
+				88571F1C2A8F099300A1D865 /* UIView+Ext.swift in Sources */,
 				8875DA132A5B0D36004C0660 /* EditProfileRouter.swift in Sources */,
 				8875DA0A2A5AE6D9004C0660 /* ProfileRouter.swift in Sources */,
 				8889C7B22A56970800954EC2 /* GameFavoriteViewModel.swift in Sources */,
@@ -840,6 +890,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxSwift\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxRelay\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SkeletonView\"",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -853,6 +904,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxSwift\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxRelay\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SkeletonView\"",
 				);
 				INFOPLIST_FILE = GameInfoAdvance/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -901,6 +953,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxSwift\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxRelay\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SkeletonView\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "COCOAPODS=1";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -915,6 +968,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxSwift\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/RxRelay\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SkeletonView\"",
 				);
 				INFOPLIST_FILE = GameInfoAdvance/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

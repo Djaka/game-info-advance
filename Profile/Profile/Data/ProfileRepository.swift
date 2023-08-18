@@ -13,15 +13,14 @@ public class ProfileRepository<
     ProfileRemoteDataSource: RemoteDataSource,
     ProfileLocalDataSource: LocalDataSource,
     Transformer: Mapper
-> :Repository where
+>: Repository where
     ProfileRemoteDataSource.Response == Profile,
     ProfileRemoteDataSource.Request == Any,
     ProfileLocalDataSource.Response == ProfileEntityModel,
     ProfileLocalDataSource.Request == Any,
     Transformer.Domain == ProfileDomainModel,
     Transformer.Entity == ProfileEntityModel,
-    Transformer.Response == Profile
-{
+    Transformer.Response == Profile {
     
     public typealias Request = Any
     public typealias Response = ProfileDomainModel
@@ -39,7 +38,7 @@ public class ProfileRepository<
     public func execute(request: Request?) -> Observable<ProfileDomainModel> {
         return localDataSource.get(request: nil)
             .filter {
-                $0.count > 0
+                !$0.isEmpty
             }
             .ifEmpty(
                 switchTo: self.remoteDataSource.execute(request: nil)

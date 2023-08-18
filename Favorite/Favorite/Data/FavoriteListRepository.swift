@@ -16,8 +16,7 @@ public class FavoriteListRepository<
     FavoriteLocalDataSoruce.Response == FavoriteEntityModel,
     FavoriteLocalDataSoruce.Request == Any,
     Transformer.Entity == FavoriteEntityModel,
-    Transformer.Domain == FavoriteDomainModel
-{
+    Transformer.Domain == FavoriteDomainModel {
 
     public typealias Request = String
     public typealias Response = [FavoriteDomainModel]
@@ -34,7 +33,7 @@ public class FavoriteListRepository<
         return localDataSource.get(request: request)
             .asObservable()
             .map { favorites in
-                return favorites.map{ entity in
+                return favorites.map { entity in
                     return self.mapper.transformEntityToDomain(entity: entity)
                 }
             }

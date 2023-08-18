@@ -10,7 +10,7 @@ import Core
 import UIKit
 import Common
 
-public struct GamesTransformer: Mapper {
+public struct GamesTransformer: RemoteMapper {
     public typealias Response = GameResponse
     public typealias Domain = GameDomainModel
     
@@ -50,33 +50,6 @@ public struct GamesTransformer: Mapper {
             backgroundImage: response.backgroundImage,
             rating: response.rating,
             isFavorite: response.isFavorite,
-            platformImages: platformImages(response.parentPlatforms)
-        )
-        
-        return gameDomainModel
-    }
-    
-    public func transformDomainToEntity(domain: GameDomainModel) -> GameEntityModel {
-        fatalError()
-    }
-    
-    public func transformResponseToEntity(response: GameResponse) -> GameEntityModel {
-        fatalError()
-    }
-    
-    public func transformEntityToDomain(entity: GameEntityModel) -> GameDomainModel {
-        fatalError()
-    }
-    
-    public func transformResponseToDomain(response: GameResponse, isFavorite: Bool) -> GameDomainModel {
-        let gameDomainModel = GameDomainModel(
-            id: response.id,
-            slug: response.slug,
-            name: response.name,
-            released: response.released,
-            backgroundImage: response.backgroundImage,
-            rating: response.rating,
-            isFavorite: isFavorite,
             platformImages: platformImages(response.parentPlatforms)
         )
         

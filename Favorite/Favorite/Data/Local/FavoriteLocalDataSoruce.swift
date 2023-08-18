@@ -22,12 +22,12 @@ public class FavoriteLocalDataSoruce: LocalDataSource {
     }
     
     public func get(request: Request?) -> Observable<[FavoriteEntityModel]> {
-        return Observable<[FavoriteEntityModel]>.create{ observer in
+        return Observable<[FavoriteEntityModel]>.create { observer in
             if let realm = self.realm {
                 
                 var games: Results<FavoriteEntityModule>?
                 
-                if let search = request as? String, search.count > 0 {
+                if let search = request as? String, !search.isEmpty {
                     let keywoard = NSPredicate(format: "name contains[c] '\(String(describing: search))'")
                     games = {
                         realm.objects(FavoriteEntityModule.self)
@@ -38,7 +38,7 @@ public class FavoriteLocalDataSoruce: LocalDataSource {
                     }()
                 }
                 
-                var favoriteEntityModels:[FavoriteEntityModel] = []
+                var favoriteEntityModels: [FavoriteEntityModel] = []
                 let favoriteGames = games?.toArray(ofType: FavoriteEntityModule.self)
                 favoriteGames?.forEach { favoriteEntity in
                     let favoriteEntityModel = FavoriteEntityModel()
@@ -61,7 +61,6 @@ public class FavoriteLocalDataSoruce: LocalDataSource {
             return Disposables.create()
         }
     }
-    
     
     public func add(entities: FavoriteEntityModel) -> Observable<Bool> {
         return Observable<Bool>.create { observer in
@@ -96,7 +95,7 @@ public class FavoriteLocalDataSoruce: LocalDataSource {
     }
     
     public func delete(request: Request) -> Observable<Bool> {
-        return Observable<Bool>.create{ observer in
+        return Observable<Bool>.create { observer in
             if let realm = self.realm {
                 do {
                     guard let id = request as? Int else {

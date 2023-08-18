@@ -50,7 +50,7 @@ public class ProfileLocalDataSource: LocalDataSource {
     
     public func get(request: Request?) -> RxSwift.Observable<[ProfileEntityModel]> {
         
-        return Observable<[ProfileEntityModel]>.create{observer in
+        return Observable<[ProfileEntityModel]>.create { observer in
             if let realm = self.realm {
                 
                 let profiles: Results<ProfileEntity> = {
@@ -59,7 +59,7 @@ public class ProfileLocalDataSource: LocalDataSource {
                 
                 var profilesEntityModel: [ProfileEntityModel] = []
                 let newProfile = profiles.toArray(ofType: ProfileEntity.self)
-                newProfile.forEach{ profileEntity in
+                newProfile.forEach { profileEntity in
                     let profileEntityModel = ProfileEntityModel()
                     profileEntityModel.id = profileEntity.id
                     profileEntityModel.author = profileEntity.author
@@ -115,7 +115,7 @@ public class ProfileLocalDataSource: LocalDataSource {
     }
     
     public func delete(request: Request) -> Observable<Bool> {
-        return Observable<Bool>.create{ observer in
+        return Observable<Bool>.create { observer in
             if let realm = self.realm {
                 do {
                     guard let id = request as? Int else {

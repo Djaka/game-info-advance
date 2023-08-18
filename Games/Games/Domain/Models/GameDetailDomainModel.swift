@@ -19,7 +19,18 @@ public class GameDetailDomainModel {
     public var platformImages: [UIImageView]?
     public var isFavorite: Bool?
     
-    public init(id: Int? = nil, slug: String? = nil, name: String? = nil, released: String? = nil, backgroundImage: String? = nil, backgroundImageAdditional: String? = nil, rating: Double? = nil, description: String? = nil, platformImages: [UIImageView]? = nil, isFavorite: Bool? = nil) {
+    public init(
+        id: Int? = nil,
+        slug: String? = nil,
+        name: String? = nil,
+        released: String? = nil,
+        backgroundImage: String? = nil,
+        backgroundImageAdditional: String? = nil,
+        rating: Double? = nil,
+        description: String? = nil,
+        platformImages: [UIImageView]? = nil,
+        isFavorite: Bool? = nil
+    ) {
         self.id = id
         self.slug = slug
         self.name = name
