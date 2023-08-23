@@ -33,7 +33,7 @@
                 <outlet property="shimmer8" destination="3J5-wJ-WYH" id="Yr3-ua-G52"/>
                 <outlet property="shimmer9" destination="Hfj-Qb-0BB" id="GU0-wy-gy7"/>
                 <outlet property="shimmerContainerView" destination="rxU-h4-eu1" id="88R-xD-x0a"/>
-                <outlet property="shimmerView" destination="LiV-9N-F33" id="rck-ma-tk1"/>
+                <outlet property="shimmerView" destination="LiV-9N-F33" id="Bks-XY-aBO"/>
                 <outlet property="subBannerImage" destination="EWb-QI-ZHZ" id="UxF-NO-6fD"/>
                 <outlet property="titleLabel" destination="5c4-fh-G16" id="amG-Eg-hdX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -277,7 +277,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.094117647058823528" green="0.070588235294117646" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="9ZH-Oy-jo2" firstAttribute="leading" secondItem="rxU-h4-eu1" secondAttribute="leading" constant="16" id="0rG-oQ-Z3e"/>
                                                 <constraint firstItem="iNJ-HG-gNP" firstAttribute="top" secondItem="CSq-RG-3lb" secondAttribute="bottom" constant="8" id="7Mz-Lr-vAY"/>
@@ -306,7 +306,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="0.094117647058823528" green="0.070588235294117646" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="rxU-h4-eu1" secondAttribute="bottom" id="2EK-il-yZl"/>
                                         <constraint firstAttribute="trailing" secondItem="rxU-h4-eu1" secondAttribute="trailing" id="GqY-2N-KWk"/>

@@ -8,15 +8,28 @@
 import UIKit
 import RxSwift
 import Favorite
+import SkeletonView
 
 class GameFavoriteViewController: UIViewController {
     
     @IBOutlet weak var gameFavoriteCollectionView: UICollectionView!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var refreshView: UIView!
+    @IBOutlet weak var shimmerView: UIView!
+    @IBOutlet weak var shimmer1: UIView!
+    @IBOutlet weak var shimmer2: UIView!
+    @IBOutlet weak var shimmer3: UIView!
+    @IBOutlet weak var shimmer4: UIView!
+    @IBOutlet weak var shimmer5: UIView!
+    @IBOutlet weak var shimmer6: UIView!
+    @IBOutlet weak var shimmer7: UIView!
+    @IBOutlet weak var shimmer8: UIView!
+    @IBOutlet weak var shimmer9: UIView!
+    @IBOutlet weak var shimmer10: UIView!
+    @IBOutlet weak var shimmer11: UIView!
+    @IBOutlet weak var shimmer12: UIView!
     
     var gameFavoriteViewModel: GameFavoriteViewModel?
     
@@ -36,6 +49,7 @@ class GameFavoriteViewController: UIViewController {
         setupSearchView()
         setupRefreshView()
         setupCollectionView()
+        setupShimmerView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +62,59 @@ class GameFavoriteViewController: UIViewController {
         searchTextField.text = ""
         searchTextField.resignFirstResponder()
         refreshPage()
+    }
+    
+    private func setupShimmerView() {
+        shimmerView.isHidden = false
+        
+        shimmer1.isSkeletonable = true
+        shimmer1.skeletonCornerRadius = 8
+        
+        shimmer2.isSkeletonable = true
+        shimmer2.skeletonCornerRadius = 8
+        
+        shimmer3.isSkeletonable = true
+        shimmer3.skeletonCornerRadius = 8
+        
+        shimmer4.isSkeletonable = true
+        shimmer4.skeletonCornerRadius = 8
+        
+        shimmer5.isSkeletonable = true
+        shimmer5.skeletonCornerRadius = 8
+        
+        shimmer6.isSkeletonable = true
+        shimmer6.skeletonCornerRadius = 8
+        
+        shimmer7.isSkeletonable = true
+        shimmer7.skeletonCornerRadius = 8
+        
+        shimmer8.isSkeletonable = true
+        shimmer8.skeletonCornerRadius = 8
+        
+        shimmer9.isSkeletonable = true
+        shimmer9.skeletonCornerRadius = 8
+        
+        shimmer10.isSkeletonable = true
+        shimmer10.skeletonCornerRadius = 8
+        
+        shimmer11.isSkeletonable = true
+        shimmer11.skeletonCornerRadius = 8
+        
+        shimmer12.isSkeletonable = true
+        shimmer12.skeletonCornerRadius = 8
+        
+        shimmer1.showAnimatedGradientSkeleton()
+        shimmer2.showAnimatedGradientSkeleton()
+        shimmer3.showAnimatedGradientSkeleton()
+        shimmer4.showAnimatedGradientSkeleton()
+        shimmer5.showAnimatedGradientSkeleton()
+        shimmer6.showAnimatedGradientSkeleton()
+        shimmer7.showAnimatedGradientSkeleton()
+        shimmer8.showAnimatedGradientSkeleton()
+        shimmer9.showAnimatedGradientSkeleton()
+        shimmer10.showAnimatedGradientSkeleton()
+        shimmer11.showAnimatedGradientSkeleton()
+        shimmer12.showAnimatedGradientSkeleton()
     }
     
     private func setupSearchView() {
@@ -111,7 +178,8 @@ class GameFavoriteViewController: UIViewController {
         viewModel.loadingStateObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { isShow in
-                self.loading.isHidden = !isShow
+                self.gameFavoriteCollectionView.isHidden = isShow
+                self.shimmerView.isHidden = !isShow
             })
             .disposed(by: disposeBag)
     }

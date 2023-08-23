@@ -28,8 +28,8 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var scrollDetail: UIScrollView!
     @IBOutlet weak var favoriteView: UIView!
     @IBOutlet weak var favoriteButton: UIButton!
-    @IBOutlet weak var shimmerContainerView: UIView!
     @IBOutlet weak var shimmerView: UIView!
+    @IBOutlet weak var shimmerContainerView: UIView!
     @IBOutlet weak var shimmer1: UIView!
     @IBOutlet weak var shimmer2: UIView!
     @IBOutlet weak var shimmer3: UIView!
@@ -85,38 +85,37 @@ class GameDetailViewController: UIViewController {
         subBannerImage.layer.cornerRadius = 10
         subBannerImage.clipsToBounds = true
         
-        shimmerView.isHidden = false
         setupShimmerView()
     }
     
     private func setupShimmerView() {
         shimmerView.isHidden = false
         shimmer1.isSkeletonable = true
-        
+
         shimmer2.isSkeletonable = true
         shimmer2.skeletonCornerRadius = 8
-        
+
         shimmer3.isSkeletonable = true
         shimmer3.skeletonCornerRadius = 8
-        
+
         shimmer4.isSkeletonable = true
         shimmer4.skeletonCornerRadius = 8
-        
+
         shimmer5.isSkeletonable = true
         shimmer5.skeletonCornerRadius = 8
-        
+
         shimmer6.isSkeletonable = true
         shimmer6.skeletonCornerRadius = 8
-        
+
         shimmer7.isSkeletonable = true
         shimmer7.skeletonCornerRadius = 8
-        
+
         shimmer8.isSkeletonable = true
         shimmer8.skeletonCornerRadius = 8
-        
+
         shimmer9.isSkeletonable = true
         shimmer9.skeletonCornerRadius = 8
-        
+
         shimmer1.showAnimatedGradientSkeleton()
         shimmer2.showAnimatedGradientSkeleton()
         shimmer3.showAnimatedGradientSkeleton()

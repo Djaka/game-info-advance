@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Common
 import Games
+import SkeletonView
 
 class GameViewController: UIViewController {
 

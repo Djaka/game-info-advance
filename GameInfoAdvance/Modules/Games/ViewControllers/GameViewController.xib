@@ -80,7 +80,11 @@
                         <constraint firstItem="i7p-QG-73C" firstAttribute="top" secondItem="WGW-56-UC6" secondAttribute="top" id="tYS-54-xaN"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUz-bt-a6C" userLabel="Shimmer">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PM5-SY-71P">
+                    <rect key="frame" x="0.0" y="174" width="414" height="722"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUz-bt-a6C" userLabel="Shimmer">
                     <rect key="frame" x="0.0" y="174" width="414" height="722"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-9T-N5o">
@@ -169,7 +173,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="Uip-aq-Pd7" firstAttribute="leading" secondItem="fXX-9T-N5o" secondAttribute="leading" id="4Z4-DF-TaE"/>
                                 <constraint firstItem="bFP-Ab-gb7" firstAttribute="leading" secondItem="fXX-9T-N5o" secondAttribute="leading" constant="20" id="4oa-ZL-aad"/>
@@ -322,10 +326,6 @@
                         <constraint firstAttribute="trailing" secondItem="Zmi-hf-HZR" secondAttribute="trailing" constant="20" id="TvM-tX-8kC"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PM5-SY-71P">
-                    <rect key="frame" x="0.0" y="174" width="414" height="722"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRr-Vz-LKX" userLabel="RefreshView">
                     <rect key="frame" x="354" y="54" width="40" height="40"/>
                     <subviews>
