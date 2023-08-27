@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ProfileResponse: Codable {
-    var profile: Profile
+    public var profile: Profile
     
     enum CodingKeys: String, CodingKey {
         case profile = "data"

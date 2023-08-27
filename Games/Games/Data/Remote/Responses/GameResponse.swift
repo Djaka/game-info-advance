@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - GameResponse
 public struct GamesResponse: Codable {
-    let results: [GameResponse]
+    public let results: [GameResponse]
     
     enum CodingKeys: String, CodingKey {
         case results = "results"

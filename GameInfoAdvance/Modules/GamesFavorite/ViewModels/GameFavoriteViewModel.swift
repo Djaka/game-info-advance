@@ -18,7 +18,7 @@ public class GameFavoriteViewModel {
                                                   Interactor<String,
                                                              [FavoriteDomainModel],
                                                              FavoriteListRepository<
-                                                                FavoriteLocalDataSoruce,
+                                                                FavoriteLocalDataSource,
                                                                 FavoritesTransformer>
                                                   >
     >
@@ -28,7 +28,7 @@ public class GameFavoriteViewModel {
                                                   Interactor<Int,
                                                              Bool,
                                                              FavoriteRemoveRepository<
-                                                                FavoriteLocalDataSoruce,
+                                                                FavoriteLocalDataSource,
                                                                 FavoritesTransformer>
                                                   >
     >
@@ -65,8 +65,8 @@ public class GameFavoriteViewModel {
     
     private var favorites: [FavoriteDomainModel] = []
     
-    init(gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
-         gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>
+    init(gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSource, FavoritesTransformer>>,
+         gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSource, FavoritesTransformer>>
     ) {
         self.gameFavoriteUseCase = GetViewModel(useCase: gameFavoriteUseCase)
         self.gameFavoriteRemoveUseCase = GetViewModel(useCase: gameFavoriteRemoveUseCase)

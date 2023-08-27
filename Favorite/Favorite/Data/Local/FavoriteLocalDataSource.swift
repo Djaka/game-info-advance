@@ -1,5 +1,5 @@
 //
-//  FavoriteLocalDataSoruce.swift
+//  FavoriteLocalDataSource.swift
 //  Favorite
 //
 //  Created by Djaka Permana on 07/08/23.
@@ -10,7 +10,7 @@ import Core
 import RealmSwift
 import RxSwift
 
-public class FavoriteLocalDataSoruce: LocalDataSource {
+public class FavoriteLocalDataSource: LocalDataSource {
     
     public typealias Request = Any
     public typealias Response = FavoriteEntityModel

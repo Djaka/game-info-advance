@@ -15,13 +15,13 @@ class GameRouter {
         let gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, GamesTransformer>
         > = Injection.init().provideGames()
         
-        let gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
+        let gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSource, FavoritesTransformer>
         > = Injection.init().provideGameRemoveFavorite()
         
-        let gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
+        let gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSource, FavoritesTransformer>
         > = Injection.init().provideGameAddFavorite()
         
-        let gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>
+        let gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSource, FavoritesTransformer>
         > = Injection.init().provideGameFavorite()
         
         let gameViewModel = GameViewModel(

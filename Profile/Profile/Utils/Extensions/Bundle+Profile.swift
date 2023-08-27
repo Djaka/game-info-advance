@@ -9,7 +9,7 @@ import Foundation
 
 private final class ProfileModule {
 
-    static var bundle: Bundle {
+    public static var bundle: Bundle {
         return Bundle(for: self)
     }
 }

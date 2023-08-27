@@ -1,31 +1,32 @@
 //
-//  FavoriteAddRepository.swift
-//  Favorite
+//  FavoriteAddRepositoryMock.swift
+//  GameInfoAdvanceTest
 //
-//  Created by Djaka Permana on 12/08/23.
+//  Created by Djaka Permana on 27/08/23.
 //
 
 import Foundation
 import Core
+import Favorite
 import RxSwift
 
-public class FavoriteAddRepository<
-    FavoriteLocalDataSource: LocalDataSource,
+public class FavoriteAddRepositoryMock<
+    FavoriteLocalDataSourceMock: LocalDataSource,
     Transformer: LocalMapper
 >: Repository where
-    FavoriteLocalDataSource.Response == FavoriteEntityModel,
-    FavoriteLocalDataSource.Request == Any,
+    FavoriteLocalDataSourceMock.Response == FavoriteEntityModel,
+    FavoriteLocalDataSourceMock.Request == Any,
     Transformer.Entity == FavoriteEntityModel,
     Transformer.Domain == FavoriteDomainModel {
 
     public typealias Request = FavoriteEntityModel
     public typealias Response = Bool
     
-    private let localDataSource: FavoriteLocalDataSource
+    private let localDataSource: FavoriteLocalDataSourceMock
     private let mapper: Transformer
     
-    public init(localDataSource: FavoriteLocalDataSource, mapper: Transformer) {
-        self.localDataSource = localDataSource
+    public init(localDataSourceMock: FavoriteLocalDataSourceMock, mapper: Transformer) {
+        self.localDataSource = localDataSourceMock
         self.mapper = mapper
     }
     

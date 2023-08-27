@@ -18,6 +18,11 @@ target 'GameInfoAdvance' do
   module_pods
   pod 'SDWebImage'
   pod "SkeletonView"
+  
+  target 'GameInfoAdvanceTest' do
+      inherit! :search_paths
+      module_pods
+  end
 end
 
 target 'Games' do

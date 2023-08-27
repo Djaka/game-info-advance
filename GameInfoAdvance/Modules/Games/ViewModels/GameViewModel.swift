@@ -28,7 +28,7 @@ public class GameViewModel {
                                                   Interactor<Int,
                                                              Bool,
                                                              FavoriteRemoveRepository<
-                                                                FavoriteLocalDataSoruce,
+                                                                FavoriteLocalDataSource,
                                                                 FavoritesTransformer>
                                                   >
     >
@@ -38,7 +38,7 @@ public class GameViewModel {
                                                   Interactor<FavoriteEntityModel,
                                                              Bool,
                                                              FavoriteAddRepository<
-                                                                FavoriteLocalDataSoruce,
+                                                                FavoriteLocalDataSource,
                                                                 FavoritesTransformer>
                                                   >
     >
@@ -48,7 +48,7 @@ public class GameViewModel {
                                                   Interactor<String,
                                                              [FavoriteDomainModel],
                                                              FavoriteListRepository<
-                                                                FavoriteLocalDataSoruce,
+                                                                FavoriteLocalDataSource,
                                                                 FavoritesTransformer>
                                                   >
     >
@@ -94,9 +94,9 @@ public class GameViewModel {
     private var disposeBag = DisposeBag()
     
     init(gameUseCase: Interactor<GameParameterRequest, [GameDomainModel], GameListRepository<GetListGameRemoteDataSource, GamesTransformer>>,
-         gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
-         gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
-         gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSoruce, FavoritesTransformer>>,
+         gameFavoriteRemoveUseCase: Interactor<Int, Bool, FavoriteRemoveRepository<FavoriteLocalDataSource, FavoritesTransformer>>,
+         gameFavoriteAddUseCase: Interactor<FavoriteEntityModel, Bool, FavoriteAddRepository<FavoriteLocalDataSource, FavoritesTransformer>>,
+         gameFavoriteUseCase: Interactor<String, [FavoriteDomainModel], FavoriteListRepository<FavoriteLocalDataSource, FavoritesTransformer>>,
          favoriteTransformer: FavoritesTransformer = FavoritesTransformer()
     ) {
         self.gameUseCase = GetViewModel(useCase: gameUseCase)

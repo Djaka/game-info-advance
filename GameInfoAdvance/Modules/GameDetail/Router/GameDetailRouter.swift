@@ -23,19 +23,19 @@ class GameDetailRouter {
         
         let gameFavoriteRemoveUseCase: Interactor<Int,
                                                   Bool,
-                                                  FavoriteRemoveRepository<FavoriteLocalDataSoruce,
+                                                  FavoriteRemoveRepository<FavoriteLocalDataSource,
                                                                            FavoritesTransformer>
         > = Injection.init().provideGameRemoveFavorite()
         
         let gameFavoriteAddUseCase: Interactor<FavoriteEntityModel,
                                                Bool,
-                                               FavoriteAddRepository<FavoriteLocalDataSoruce,
+                                               FavoriteAddRepository<FavoriteLocalDataSource,
                                                                      FavoritesTransformer>
         > = Injection.init().provideGameAddFavorite()
         
         let gameFavoriteUseCase: Interactor<String,
                                             [FavoriteDomainModel],
-                                            FavoriteListRepository<FavoriteLocalDataSoruce,
+                                            FavoriteListRepository<FavoriteLocalDataSource,
                                                                    FavoritesTransformer>
         > = Injection.init().provideGameFavorite()
         

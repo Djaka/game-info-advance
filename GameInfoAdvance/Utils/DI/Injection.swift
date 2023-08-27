@@ -12,7 +12,7 @@ import Games
 import Favorite
 import Profile
 
-final class Injection {
+public class Injection {
     
     private let realm = try? Realm()
     
@@ -39,7 +39,7 @@ final class Injection {
     }
 
     func provideGameFavorite<U: UseCase>() -> U where U.Request == String, U.Response == [FavoriteDomainModel] {
-        let local = FavoriteLocalDataSoruce(realm: realm)
+        let local = FavoriteLocalDataSource(realm: realm)
         let mapper = FavoritesTransformer()
         let repository = FavoriteListRepository(localDataSource: local, mapper: mapper)
         
@@ -51,7 +51,7 @@ final class Injection {
     }
     
     func provideGameRemoveFavorite<U: UseCase>() -> U where U.Request == Int, U.Response == Bool {
-        let local = FavoriteLocalDataSoruce(realm: realm)
+        let local = FavoriteLocalDataSource(realm: realm)
         let mapper = FavoritesTransformer()
         let repository = FavoriteRemoveRepository(localDataSource: local, mapper: mapper)
         
@@ -63,7 +63,7 @@ final class Injection {
     }
     
     func provideGameAddFavorite<U: UseCase>() -> U where U.Request == FavoriteEntityModel, U.Response == Bool {
-        let local = FavoriteLocalDataSoruce(realm: realm)
+        let local = FavoriteLocalDataSource(realm: realm)
         let mapper = FavoritesTransformer()
         let repository = FavoriteAddRepository(localDataSource: local, mapper: mapper)
         

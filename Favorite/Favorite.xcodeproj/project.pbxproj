@@ -14,7 +14,7 @@
 		88C25CEB2A809A2E0037760F /* Favorite.docc in Sources */ = {isa = PBXBuildFile; fileRef = 88C25CEA2A809A2E0037760F /* Favorite.docc */; };
 		88C25CEC2A809A2E0037760F /* Favorite.h in Headers */ = {isa = PBXBuildFile; fileRef = 88C25CE92A809A2E0037760F /* Favorite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88C25CF62A809B450037760F /* FavoriteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C25CF52A809B450037760F /* FavoriteListRepository.swift */; };
-		88C25CF82A80A0BF0037760F /* FavoriteLocalDataSoruce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C25CF72A80A0BF0037760F /* FavoriteLocalDataSoruce.swift */; };
+		88C25CF82A80A0BF0037760F /* FavoriteLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C25CF72A80A0BF0037760F /* FavoriteLocalDataSource.swift */; };
 		88C25CFA2A80A2EA0037760F /* FavoriteEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C25CF92A80A2EA0037760F /* FavoriteEntityModel.swift */; };
 		88C25CFC2A80A3060037760F /* FavoriteEntityModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C25CFB2A80A3060037760F /* FavoriteEntityModule.swift */; };
 		EBA918BB110124EBFEA50A6A /* Pods_Favorite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF659C14A18B02AB429800DA /* Pods_Favorite.framework */; };
@@ -30,7 +30,7 @@
 		88C25CE92A809A2E0037760F /* Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		88C25CEA2A809A2E0037760F /* Favorite.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Favorite.docc; sourceTree = "<group>"; };
 		88C25CF52A809B450037760F /* FavoriteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepository.swift; sourceTree = "<group>"; };
-		88C25CF72A80A0BF0037760F /* FavoriteLocalDataSoruce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocalDataSoruce.swift; sourceTree = "<group>"; };
+		88C25CF72A80A0BF0037760F /* FavoriteLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocalDataSource.swift; sourceTree = "<group>"; };
 		88C25CF92A80A2EA0037760F /* FavoriteEntityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntityModel.swift; sourceTree = "<group>"; };
 		88C25CFB2A80A3060037760F /* FavoriteEntityModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteEntityModule.swift; sourceTree = "<group>"; };
 		A57881415CB1C58277F6FD9D /* Pods-Favorite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Favorite.debug.xcconfig"; path = "Target Support Files/Pods-Favorite/Pods-Favorite.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				88C25CF42A809AE10037760F /* Entities */,
-				88C25CF72A80A0BF0037760F /* FavoriteLocalDataSoruce.swift */,
+				88C25CF72A80A0BF0037760F /* FavoriteLocalDataSource.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -248,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88C25CEB2A809A2E0037760F /* Favorite.docc in Sources */,
-				88C25CF82A80A0BF0037760F /* FavoriteLocalDataSoruce.swift in Sources */,
+				88C25CF82A80A0BF0037760F /* FavoriteLocalDataSource.swift in Sources */,
 				88C25CFA2A80A2EA0037760F /* FavoriteEntityModel.swift in Sources */,
 				88C25CF62A809B450037760F /* FavoriteListRepository.swift in Sources */,
 				88C25CFC2A80A3060037760F /* FavoriteEntityModule.swift in Sources */,
