@@ -2,32 +2,36 @@
 
 ![RT](gameinfoadvance.gif)
 
-Aplikasi GameInfoAdvance merupakan aplikasi catalog game yang di rancang khusus untuk keperluan submission pada modul Menjadi iOS develover expert. Dalam membangun aplikasi ini terdapat beberapa halaman diantaranya adalah:
+The GameInfoAdvance application is a game catalog application designed explicitly for submission purposes in the Become an iOS Developer Expert module. In building this application there are several pages including:
 
 | No | Page Name                    | Fungsi                                                            |
 | -- | -----------------------------| ------------------------------------------------------------------|
-| 1  | Home                         | menampilkan catalog game                                          |
-| 2  | Detail                       | menampilkan detail informasi dari catalog game yang di pilih      |
-| 3  | Favorites                    | menampilkan list game yang sudah di wishlist ke favorite          |
-| 4  | Profile                      | menjelaskan tentang aplikasi dan profile pembuat                  |
-| 5  | Edit Profile                 | halaman untuk mengubah, mengupdate profile pengguna               |
+| 1  | Home                         | Display the game catalog                                          |
+| 2  | Detail                       | Display detailed information from the selected game catalog       |
+| 3  | Favorites                    | Display a list  of games that have been wishlisted to favourites  |
+| 4  | Profile                      | Explain about the application and profile maker                   |
+| 5  | Edit Profile                 | Page to change or update the user profile                         |
 
-berikut merupakan sketsa atau wireframe dari aplikasi PremierLeagueInfo:
+The following is a sketch or wireframe of the PremierLeagueInfo application:
 
 ![RT](WireframeGameInfo.png)
 
 
 ### Project Architecture
-Project ini menggunakan Clean architecture pattern.
+This project has implemented modularization and uses the concept of the MVVM pattern with a Clean architecture approach.
 
-### Penjelasan Singkat
-1. ketika user pertama kali masuk ke halaman utama atau home maka akan muncul loading terlebih dahulu yg mana proses ini membutuhkan waktu untuk mengambil data ke API https://rawg.io
-2. apabila berhasil maka daftar game akan muncul di halaman home tersebut
-3. jika user melakukan scroll ke bawah maka akan di temukan loading yg mana pada proses ini akan melakukan request ke api untuk menampilkan 10 list game berikutnya
-4. user bisa melakukan pencarian dengan cara memasukan keywoards atau kata kunci di kolom pencarian
-5. ketika user memilih salah satu game dari list maka akan di lanjutkan ke halaman detail game yang mana di halaman ini menampilkan deskripsi, gambar, rating, dan platforms yang support dari game tersebut
-7. user dapat kembali ke halaman utama dengan menekan tombol navigasi back di pojok kanan atas
-8. untuk menambahkan game favorite user dapat menekan icon heart di list maupun detail, jika sudah di tambahkan maka akan muncul di halaman list favorite pada tab favorite, dan icon heart akan berubah menjadi fill
-9. user pun dapat menghapus game yg sudah di wishlist dengan cara meng klik icon heart baik di list maupun detail halaman game
-10. pilih "icon person" atau tab "profile" maka user dapat melihat deskripsi dan pembuat dari aplikasi Game Info ini
-11. terdapat feature update profile yang mana akan merubah nama, email, dan juga current job dari pengguna dengan cara menekan tombol edit
+![RT](Architecture.png)
+
+![RT](CleanArchitecture.png)
+
+### Description of feature
+1. When the user first enters the main or home page, loading will appear first, which process takes time to retrieve data from the API https://rawg.io
+2. If successful, a list of games will appear on the home page
+3. If the user scrolls down, the infinity scroll feature will be found. This process will request the API to display the following ten game lists
+4. Users can search by entering keywords or keywords in the search field
+5. When the user selects a game from the list, it will proceed to the game detail page. This page displays a description, image, rating, and supported platforms of the game
+7. The user can return to the main page by pressing the back navigation button in the upper right corner
+8. The user can press the heart icon on the list or details to add a favorite game and show on the favorites list page on the favorites tab, and the heart icon will change to fill
+9. Users can also delete games that are already on the wishlist by clicking the heart icon both on the list and on the game details page
+10. Select the "icon person" or the "profile" tab so the user can see the description and creator of this Game Info application
+11. There is a profile update feature that will change the user name, email, and current job by pressing the edit button
