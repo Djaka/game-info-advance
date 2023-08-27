@@ -1,0 +1,16 @@
+//
+//  Development.xcconfig
+//  GameInfoAdvance
+//
+//  Created by Djaka Permana on 03/07/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+CF_APP_NAME = Game Info (Dev)
+CF_APP_BUNDLE_ID = com.djakapermana.www.GameInfoAdvance.dev
+CF_APP_BUNDLE_ID_TEST = com.djakapermana.www.GameInfoAdvanceTests.dev
+CF_APP_BUNDLE_ID_UI_TEST = com.djakapermana.www.GameInfoAdvanceUITests.dev
+CF_BASE_URL = https:/$()/api.rawg.io/api
+CF_API_KEY = e067d30f8a764ea9a7c54458e1e6911d
